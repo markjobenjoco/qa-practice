@@ -1,0 +1,13 @@
+{
+  "userDetails": {
+    "firstName": "John",
+    "lastName": "Doe",
+    "phoneNumber": "1234567890",
+    "country": "Philippines",
+    "email": "email",
+    "password": "password"
+  },
+  "invalidInputs": {
+    "random": "abc123!@#"
+  }
+}
