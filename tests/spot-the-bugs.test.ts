@@ -1,5 +1,5 @@
-import { test, expect } from '@playwright/test'
-import { userDetails, invalidInputs } from '../automation/data/form-registration.json'
+import { test } from '@playwright/test'
+import { invalidInputs, userDetails } from '../automation/data/form-registration.json'
 import { FormRegistrationPage } from '../automation/pages/form-registration.page'
 
 test.describe('Form Registration Page', () => {
@@ -65,37 +65,37 @@ test.describe('Form Registration Page', () => {
    * Bug Counter: 12
    */
   test('Form submission', async () => {
-    test.step('Enter and validate first name', async () => {
+    await test.step('Enter and validate first name', async () => {
       const firstName = formRegistrationPage.selectors.textboxes.firstName
       await formRegistrationPage.enterFirstName(invalidInputs.random, false)
       await firstName.clear()
       await formRegistrationPage.enterFirstName(userDetails.firstName)
     })
 
-    test.step('Enter and validate last name', async () => {
+    await test.step('Enter and validate last name', async () => {
       await formRegistrationPage.enterLastName(userDetails.lastName)
     })
 
-    test.step('Enter and validate phone number', async () => {
+    await test.step('Enter and validate phone number', async () => {
       const phoneNumberSelector = formRegistrationPage.selectors.textboxes.phoneNumber
       await formRegistrationPage.enterPhoneNumber(invalidInputs.random, false)
       await phoneNumberSelector.clear()
       await formRegistrationPage.enterPhoneNumber(userDetails.phoneNumber)
     })
 
-    // test.step('Enter and validate country', async () => {
-    //   await formRegistrationPage.selectCountry(userDetails.country)
-    // })
+    await test.step('Enter and validate country', async () => {
+      await formRegistrationPage.selectCountry(userDetails.country)
+    })
 
-    test.step('Enter and validate email address', async () => {
+    await test.step('Enter and validate email address', async () => {
       await formRegistrationPage.enterEmail(userDetails.email)
     })
 
-    test.step('Enter and validate password', async () => {
+    await test.step('Enter and validate password', async () => {
       await formRegistrationPage.enterPassword(userDetails.password)
     })
 
-    test.step('Validate T&C', async () => {
+    await test.step('Validate T&C', async () => {
       await formRegistrationPage.assertTermsAndConditions()
     })
 
